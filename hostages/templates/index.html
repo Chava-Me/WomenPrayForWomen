@@ -1,0 +1,54 @@
+
+{% extends 'base.html' %}
+
+ {% block content %}
+
+<li style="position: fixed;">
+     {% if isHebrew %}
+        <a href="en" lang="en" >English</a>
+        {% else %}
+        <a href="he" lang="he" >עברית</a>
+     {% endif %}
+
+
+</li>
+<header style="text-align:center">
+    <h1>נשים למען נשים</h1>
+ <h3>מתפללות על החטופות</h3>
+<p>
+כמה נורא להיות שבוי בידי מחבלים בשבי בעזה
+<br/>
+וכמה נורא עוד יותר להיות אישה בידי מרצחים!
+<br/>
+הבה נתפלל על אחיותינו הנמצאות במצב קטסטרופלי מעבר לגבול
+<br/>
+<br/>
+
+בחרי לך חטופה והתפללי בעבורה</p>
+</header>
+
+
+
+
+<div class="col" style="display: flex; flex-wrap: wrap; justify-content: center;">
+    {% for hos in hostages %}
+<div class="card" style="width: 15rem; padding:20px;text-align:center; margin:10px; border:none; background-color: lightgray; position: relative;">
+  <img src="{{hos.img}}" class="card-img-top" alt="{{hos.name}}">
+  <div class="card-body" >
+    <h3 class="card-title">{{hos.name}}</h3>
+    <p class="card-text">{{hos.info}}</p>
+  </div>
+   <div style="position: relative; padding:10px bottom: 25px;">
+    <h5 class="card-title"><b>{{hos.pray_name}}</b></h5>
+    <a href="{{hos.url}}" class="btn btn-secondary">
+         {% if isHebrew %}
+        לקריאת פרק תהילים
+        {% else %}
+        Read a Perek Tehilim
+     {% endif %}
+    </a>
+      </div>
+</div>
+    {% endfor %}
+</div>
+ {% endblock %}
